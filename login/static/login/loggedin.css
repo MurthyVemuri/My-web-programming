@@ -1,0 +1,35 @@
+#hh4{
+	position: absolute;
+	top:50px;
+	right:760px;
+	color: #FF4500;
+}
+
+#game {
+	position: absolute;
+	top:150px;
+	right:860px;
+	color: #FF4500;
+
+}
+
+
+a {
+    color: white;
+}
+
+
+#p{
+	position: absolute;
+	top:-9px;
+	right:200px;
+	color: Red;
+}
+
+#h4{
+	position: absolute;
+	top:-9px;
+	right:50px;
+	color: red;
+}
+

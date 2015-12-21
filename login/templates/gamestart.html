@@ -1,0 +1,44 @@
+<SCRIPT LANGUAGE="JavaScript">
+
+var secret=Math.round(Math.random()*(9)+1);
+var speech='Guess number from 1 to 10';
+
+function process(secretno) {
+	
+	var guess=document.forms.guessquiz.guess.value;
+	var speech='"'+guess+ '" does not make sense to me.';
+	document.forms.guessquiz.guess.value='';
+
+	if (guess == secretno) {
+		document.forms.guessquiz.prompt.value='You have won, the guess number is '+secretno+' is correct!';
+		alert ('Well done.');
+		speech='';
+		document.location=document.location;
+	}
+
+	if (secretno<guess) {
+		speech='Less than '+ guess;
+	}
+
+	if (secretno>guess) {
+		speech='Greater than '+ guess;
+	}
+
+	if (guess == '') {
+		speech='Please choose something!'
+	}
+
+	document.forms.guessquiz.prompt.value=speech; document.forms.guessquiz.guess.focus();
+
+}
+
+</SCRIPT>
+
+<FORM onSubmit="" NAME="guessquiz">
+<CENTER>
+	<B>GUESS MY NUMBER (1 - 10)</B>
+	<INPUT TYPE="text" NAME="prompt" SIZE="31" MAXLENGTH="40" VALUE="Guess my number (from 1 to 10)"><BR>
+	<INPUT TYPE="text" NAME="guess" SIZE="3" MAXLENGTH="3" VALUE="">
+	<INPUT TYPE="button" VALUE="Guess" onClick='process(secret)'>
+</CENTER>
+</FORM>`

@@ -1,15 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>User Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrapregister/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesomeregister/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="jsregister/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrapregister/js/bootstrap.min.js"></script>
+</head>
+
+<body>
 {% extends "base.html" %}
 
 {% block content %}
 
-    <h2>Register</h2>
-    <form action="/accounts/register/" method="post">{% csrf_token %} {{form}} 
-    <input type="submit" value="Register" />   
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/formstyle.css' %}" />
+<div class="container">
+    <h2 style = "color:Red">Registration Form</h2>
+    <form name="f" onsubmit="return onlyAlphabets()" action="/accounts/register/" method="post" class="col-md-12"> {% csrf_token %} 
+	    <div class="form-group">
+		    <div id = "usernametext">
+		    	<p style = "color:Red">Username</p>
+		    </div>
+		</div>
+		<div class="form-group">
+		    <div id = "username">
+		    	<p>{{form.username}}</p>
+		    </div>
+		    </div>
+		<div class="form-group">
+		    <div id = "first_nametext">
+		    	<p style = "color:Red">First Name</p>
+		    </div>
+		    </div>
+		<div class="form-group">
+		    <div id = "first_name">
+		    	<p>{{form.first_name}}</p>
+		    </div>
+		    </div>
+		<div class="form-group">
+         
+		    <div id = "last_nametext">
+		    	<p style = "color:Red">Last Name</p>
+		    </div>
+		    </div>
+
+		 <div class="form-group">   
+		    <div id = "last_name">
+		    	<p>{{form.last_name}}</p>
+		    </div>
+</div>
+		    <div class="form-group">
+
+		    <div id = "emailtext">
+		    	<p style = "color:Red">Email</p>
+		    </div>
+		    </div>
+		    <div class="form-group">
+		    <div id = "email">
+		    	<p>{{form.email}}</p>
+		    </div>
+		    </div>
+
+<div class="form-group">
+		    <div id = "password1text">
+		    	<p style = "color:Red">Password</p>
+		    </div> 
+		    </div>  
+
+		    <div class="form-group">
+		    <div id = "password1">
+		    	<p>{{form.password1}}</p>
+		    </div>
+		    </div>
+<div class="form-group">
+		    <div id = "password2text">
+		    	<p style = "color:Red">Re-type Password</p>
+		    </div>	    
+</div>
+		    <div class="form-group">
+		    <div id = "password2">
+		    	<p>{{form.password2}}</p>
+		    </div>
+		    </div>
+    	<input id = "button" class="btn btn-danger" type="submit" value="Register" style="font-size:150%" onsubmit="return onlyAlphabets()"/>   
     </form>
-    <script type="text/javascript">
-    console.log(password1)
+</div>
+    <script type="javascript">
+    	function onlyAlphabets() {
+		  var regex = /^[a-zA-Z]*$/;
+		  if (regex.test(document.f.nm.value)) {
+		      return true;
+		  } else {
+		      document.getElementById("username").innerHTML = "Alphabets Only";
+		      return false;
+		  }
     </script>
 
 {% endblock %}
 
-
+</body>
+</html>

@@ -1,18 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>User Login / Sign Up </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-{% extends "base.html" %}
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesomelogin/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="jslogin/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    {% extends "base.html" %}
 
 {% block content %}
 
- 	{% if form.errors %}
- 		<p class="error"> sorry, wrong username and pasword</p>
- 	{% endif %}
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
 
-    <form action="/accounts/auth/" method="post"> {% csrf_token %} 
-    	<label for= "username" >user name:</label>
-    	<input type="text" name="username" value="" id="username">
-    	<label for="password">password:</label>
-    	<input type="password" name="password" value="" id="password">
-    	<input type="submit" value="login" />
-    </form>
+ 	{% if form.errors %}
+ 		<p class="error"> sorry, wrong username and password</p>
+ 	{% endif %}
+<div style="display:flex">
+    <div class="container">
+         	<div style="align:centre">
+         	    <h1>Login</h1>
+        	        <form action="/accounts/auth/" method="post" class="col-md-12"> {% csrf_token %} 
+                    <div class="form-group">
+            	    	<label for= "username" >UserName:</label>
+            	    	<input type="text" name="username" value="" id="username" required>
+                    </div>
+                    <div class="form-group">
+            	    	<label for="password"> Password : </label>
+            	    	<input type="password" name="password" value="" id="password" required>
+                    </div>
+                    <div class="form-group">
+            	    	<button type="submit" class="btn btn-danger">Login</button>
+                    </div>
+        	        </form>
+                <br>
+                <br>
+                <br>
+            
+            </div>
+            <div>
+                <br>
+                <br>
+            	<h2>New User?</h2>
+                <form action="/accounts/register/">
+                    <button type="submit" class="btn btn-danger">Register Here</button>
+                </form>
+            </div>
+            <br>
+            <br> 
+    </div>
+</div>
 {% endblock %}
+
+</body>
+</html>
 
